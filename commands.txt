@@ -1,0 +1,51 @@
+1 create an docker image 
+docker build -t <image_name> .
+
+2 showing images 
+docker images
+
+3 create container which created image
+docker run --name <container_name> -p <any port no 5173>:<EXPOSE port on Docker file 3000> <image_name>
+
+ex:-  docker run --name react-application-container -p 5173:3000 -d react-application-docker-img
+
+4 To see all the running services(containers)
+  docker ps
+
+5.To see all the containers (running ones or not)
+docker ps -a
+
+6.To stop a running container
+docker stop <container_name>
+or
+docker stop container_id
+
+7.To restart a docker container
+Docker start container_name
+(here we don't need to re configure the port mappings as we did that earlier)
+
+‘
+
+
+8.Remove a docker container
+docker ps -a
+docker container rm CONTAINER_ID_OR_NAME
+
+Remove multiple containers
+docker container rm CONTAINER_ID_OR_NAME CONTAINER_ID_OR_NAME
+
+9.Remove a docker image
+docker images
+docker image rm IMAGE_ID_OR_TAG
+
+10.Remove all containers all images and all volumes
+docker system prune -a
+
+
+-----------------------------------------------------------------------------
+11  create docker container with volume
+
+docker run --name <container_name> -p 5173:3000 --rm -v <create_volume> -v ${PWD}:/app -e CHOKIDAR_USEPOLLING=true <image_name>
+
+ex 
+ 
